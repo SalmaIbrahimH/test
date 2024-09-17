@@ -1,0 +1,138 @@
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+.custom-btn {
+  border: none;
+  outline: none;
+  width: 100%;
+  background-color: #fff;
+  padding: .75rem 1.25rem;
+  transition: all .35s;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  h6 {
+    margin-bottom: 0;
+    font-size: 14px;
+  }
+  &:last-child {
+    border-top: 1px solid #efefef;
+  }
+  &:hover {
+    // background-color: $blue-ish;
+    color: #fff;
+    .icon {
+      // color: $black-ish;
+    }
+  }
+  .icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #efefef;
+    transition: background-color .35s;
+    // @include flexCenter();
+    // span.pi {
+    //   font-size: 14px !important;
+    // }
+  }
+}
+
+.largerIcon{
+  font-size: 100px;
+zoom:3;
+}
+.stepper-container {
+  padding: 16px;
+
+  .step-indicators {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 24px;
+
+    .step-indicator-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .step-indicator {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: lightgray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      z-index: 2; /* Ensure the step indicator is above the line */
+    }
+
+    .step-title {
+      margin-top: 8px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .active .step-indicator {
+      background-color: var(--ion-color-primary);
+    }
+
+    /* Styling the lines between the steps */
+    .step-line {
+      position: absolute;
+      top: 20px; /* Aligns with the center of the step indicator */
+      left: 50%;
+      width: 100%;
+      height: 2px;
+      background-color: lightgray;
+      z-index: 1; /* Behind the step indicators */
+    }
+
+    /* Active lines between completed steps */
+    .active-line {
+      background-color: var(--ion-color-primary);
+    }
+  }
+
+  .step-content {
+    margin-bottom: 24px;
+  }
+
+  .step-navigation {
+    display: flex;
+    justify-content: space-between;
+    ion-button {
+      flex: 1;
+      margin: 0 4px;
+    }
+  }
+}

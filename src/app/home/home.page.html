@@ -1,0 +1,68 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!-- <div class="left">
+
+      <img src="assets/images/wave-haikei (7).png" class="wave" alt="">
+      <div class="overlay"></div>
+      <div class="content">
+        <div class="text-center logo">
+          <h2>Welcome To</h2>
+          <h2><span>V</span>Library</h2>
+        </div>
+        <h2>Login to your account</h2>
+        <p>An easier, more powerful platform to manage social learning at scale. Combine a wide range of learning activities together in a learning flow</p>
+      </div>
+    </div> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <div class="stepper-container">
+      <!-- Step Indicator -->
+      <ion-row class="step-indicators">
+        <ion-col *ngFor="let step of steps; let i = index" [ngClass]="{'active': i <= currentStep}">
+
+          <div class="step-indicator">{{ i + 1 }}</div>
+          <div class="step-title">{{ step.title }}</div>
+
+          <!-- Add a connecting line between steps, except for the last one -->
+          <div class="step-line" *ngIf="i < steps.length - 1" [ngClass]="{'active-line': i < currentStep}"></div>
+        </ion-col>
+      </ion-row>
+
+      <!-- Step Content -->
+      <div class="step-content">
+        <ng-container [ngSwitch]="currentStep">
+          <div *ngSwitchCase="0">
+            <h2>{{ steps[0].title }}</h2>
+            <p>{{ steps[0].description }}</p>
+            <ion-input placeholder="Enter your name"></ion-input>
+          </div>
+          <div *ngSwitchCase="1">
+            <h2>{{ steps[1].title }}</h2>
+            <p>{{ steps[1].description }}</p>
+            <ion-input placeholder="Enter your email"></ion-input>
+          </div>
+          <div *ngSwitchCase="2">
+            <h2>{{ steps[2].title }}</h2>
+            <p>{{ steps[2].description }}</p>
+            <ion-input placeholder="Review your details"></ion-input>
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="step-navigation">
+        <ion-button expand="block" (click)="prevStep()" [disabled]="isFirstStep()">Previous</ion-button>
+        <ion-button expand="block" (click)="nextStep()" *ngIf="!isLastStep()">Next</ion-button>
+        <ion-button expand="block" color="success" *ngIf="isLastStep()">Finish</ion-button>
+      </div>
+    </div>
+    <!-- <ion-card-header>
+      <ion-card-title>Card Title</ion-card-title>
+      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+    </ion-card-header> -->
+
+  </ion-card>
+</ion-content>

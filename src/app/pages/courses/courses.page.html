@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar id="logo">
+    <ion-img src="../../../assets/vflogo.png"  alt=""></ion-img>
+    <ion-title><span>V</span>Library</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<ion-grid>
+  <ion-row>
+
+  <ion-col class="ion-padding">
+ <ion-text color="medium">
+    <h1>Courses</h1>
+  </ion-text> </ion-col>
+
+</ion-row>
+<ion-row>
+<ion-col size="10" offset="1">
+  <ion-card  *ngFor="let course of courses | paginate: { itemsPerPage: pageSize, currentPage: pageNumber, totalItems: totalRecords,
+ }" >
+    <ion-img class="" [alt]="course.name" [src]="course?.cover" ></ion-img>
+    <ion-card-header>
+      <ion-card-title>{{course.name}}</ion-card-title>
+      <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+    </ion-card-header>
+
+    <ion-card-content>
+      <p class="description">{{ (course.description?.length > 150 ? (course.description | slice:0:150) + '...' : course.description) || '_____' }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-col>
+
+
+</ion-row>
+<ion-row>
+  <ion-col size="10" offset="1">
+  <pagination-controls (pageChange)="paginate($event)"></pagination-controls></ion-col>
+</ion-row>
+</ion-grid>
+
+</ion-content>

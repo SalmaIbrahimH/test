@@ -1,0 +1,635 @@
+
+@import './variables.scss';
+@import './mixins.scss';
+
+@media (max-width:768px) {
+  ckeditor {
+    p, li, a, div {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width:575px) {
+  h2 {
+    font-size: calc(1.225rem + .9vw);
+  }
+  h3 {
+    font-size: calc(1.175rem + .6vw);
+  }
+  h4 {
+    font-size: calc(1.075rem + .3vw);
+  }
+  h5 {
+    font-size: 1.025rem;
+  }
+  h6 {
+    font-size: .875rem;
+  }
+}
+
+.pi {
+  font-size: .8rem;
+}
+
+.actions-menu-overlay {
+  &.course-menu {
+    .p-overlaypanel {
+      top: 1.25rem !important;
+      left: unset !important;
+      right: 0;
+      box-shadow: 4px 4px 8px rgb(0 0 0 / 25%);
+    }
+  }
+
+  .p-overlaypanel {
+    top: 2rem !important;
+    left: 1rem !important;
+    min-width: 200px !important;
+    &::before, &::after {
+      display: none;
+    }
+    .p-overlaypanel-content {
+      padding: 0;
+    }
+  }
+  ul.actions-menu {
+    li {
+      padding: .25rem .5rem;
+      font-size: 12px;
+      border-bottom: 1px solid #ededed;
+      cursor: pointer;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+.btn {
+  padding: .25rem 1.25rem;
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px rgb(0 0 0 / 10%);
+  border: none;
+  &:hover, &:focus {
+    box-shadow: none;
+  }
+  @media (max-width: 768px) {
+    padding: .25rem .625rem;
+    font-size: .825rem;
+  }
+  @media (max-width: 575px) {
+    padding: .25rem .625rem;
+    font-size: .75rem;
+  }
+  &.btn-info {
+    background-color: $blue-ish;
+    color: #fff;
+    background-repeat: no-repeat !important;
+    background-size: 190% !important;
+    transition: all .25s;
+    background: radial-gradient(circle farthest-side, #616161, #3d3d3d);
+    // background: radial-gradient(circle farthest-side, #fc0002, #6c0100);
+    &:hover {
+      background-position: 100%;
+    }
+    &:active:focus {
+      box-shadow: 0 0 0 0.25rem rgb(0 0 0 / 50%);
+    }
+  }
+  &.btn-danger {
+    background-color: $red-ish;
+  }
+  &.btn-success {
+    background-color: green;
+  }
+  &.btn-red-gradient {
+    background-repeat: no-repeat !important;
+    background-size: 190% !important;
+    transition: all .25s;
+    color: #fff;
+    background: radial-gradient(circle farthest-side, #e60000, #ae0301);
+    &:hover {
+      background-position: 100%;
+    }
+  }
+  &.btn-gradient-custom {
+    background: linear-gradient(60deg, $black-ish, $blue-ish);
+    color: #fff;
+  }
+
+  &.outline {
+    background: transparent !important;
+    &.btn-info {
+      color: $black-ish !important;
+      border: 1px solid $black-ish;
+      &:hover {
+        background: rgba($black-ish, .1) !important;
+      }
+    }
+    &.btn-danger {
+      color: $red-ish !important;
+      border: 1px solid $red-ish;
+      &:hover {
+        background: rgba($red-ish, .1) !important;
+      }
+    }
+    &.btn-success {
+      color: green !important;
+      border: 1px solid green;
+      &:hover {
+        background: rgba(green, .1) !important;
+      }
+    }
+  }
+}
+
+.dropdownOverride {
+  border-radius: 30px;
+  border: none;
+  width: 100%;
+  box-shadow: 1px 1px 10px rgba(0,0,0,.1);
+  transition: all .35s;
+  &.p-dropdown:not(.p-disabled).p-focus {
+    box-shadow: none !important;
+  }
+  .p-dropdown-items {
+    padding: 0 !important;
+    .p-dropdown-item.p-highlight {
+      background-color: $vf-color;
+    }
+  }
+  .p-dropdown-label {
+    font-family: 'Comfortaa', cursive;
+  }
+  span.p-dropdown-label.p-inputtext.p-placeholder {
+    font-family: 'Comfortaa', cursive;
+  }
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+  background-color: $vf-color !important;
+}
+
+// PRIME NG SIDEBAR
+.p-sidebar {
+  border: unset;
+  border-left: 10px solid #2d2939;
+  background: linear-gradient(60deg, $black-ish, $vf-color);
+  overflow: auto;
+  @media (max-width: 575px) {
+    width: 17rem !important;
+  }
+  .p-sidebar-content {
+    padding: 0;
+    padding-bottom: 1rem;
+    overflow: visible;
+  }
+  .p-sidebar-header {
+    padding: unset;
+  }
+}
+// ADMIN SIDEBAR
+.admin-sidebar .p-sidebar .p-sidebar-content {
+  padding-bottom: 8rem;
+}
+
+// PRIME NG PAGINATOR
+.p-paginator {
+  * {
+    border: none !important;
+  }
+  .p-focus {
+    box-shadow: 0 0 0 0.2rem rgb(60 60 60 / 50%) !important;
+  }
+  .p-paginator-current {
+    color: $blue-ish !important;
+    @media (max-width: 768px) {
+      width: 100%;
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: .25rem;
+    }
+  }
+  .p-paginator-first, .p-paginator-prev,
+  .p-paginator-next, .p-paginator-last {
+    color: $blue-ish !important;
+    @media (max-width: 768px) {
+      min-width: 1.75rem !important;
+      height: 1.75rem !important;
+      font-size: 14px;
+    }
+  }
+  .p-paginator-pages .p-paginator-page {
+    color: $blue-ish !important;
+    @media (max-width: 768px) {
+      min-width: 1.75rem !important;
+      height: 1.75rem !important;
+      font-size: 14px;
+    }
+    &.p-highlight {
+      background-color: $blue-ish;
+      border-color: $blue-ish;
+      color: #fff !important;
+    }
+  }
+  .p-dropdown {
+    border-color: #dee2e6;
+    .p-dropdown-label {
+      color: $blue-ish;
+      @include flexCenter();
+    }
+    .p-dropdown-trigger {
+      color: $blue-ish;
+      position: relative;
+      top: 1px;
+    }
+    .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+      @include flexCenter();
+      padding: .25rem .75rem;
+      &.p-highlight {
+        background-color: $blue-ish;
+      }
+    }
+    .p-dropdown-panel .p-dropdown-items:not(.p-dropdown-virtualscroll) {
+      padding: 0;
+    }
+  }
+  .p-paginator-pages {
+    .p-link:focus {
+      box-shadow: 0 0 0 0.2rem rgb(60 60 60 / 50%) !important;
+    }
+  }
+}
+
+// PRIME NG DIALOG
+.dialog-class {
+  .p-dialog-header {
+    display: none;
+  }
+
+  @media (max-width: 991.9px) {
+    min-width: 80% !important;
+  }
+  @media (max-width: 767.9px) {
+    min-width: 85% !important;
+  }
+  @media (max-width: 569.9px) {
+    min-width: 90% !important;
+  }
+
+  // Dialog dropdowns
+  .dropdownOverride {
+    border-top-color: transparent !important;
+    border-right-color: transparent !important;
+    border-left-color: transparent !important;
+    border-bottom: 1px solid #ddd !important;
+    box-shadow: none !important;
+    border-radius: 0;
+    // .p-dropdown-label {
+    //   // border-bottom:  1px solid #cdcdcd !important;
+    // }
+    &:focus {
+      border-width: 2px;
+      border-color: $blue-ish !important;
+      border-top-color: transparent !important;
+      border-right-color: transparent !important;
+      border-left-color: transparent !important;
+      & ~ label {
+        top: -.25rem !important;
+      }
+    }
+    &.p-filled ~ label {
+      top: -.25rem !important;
+    }
+    & ~ label {
+      font-size: 14px;
+    }
+  }
+
+  .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    background-color: $vf-color !important;
+  }
+
+
+
+  // dialog card
+  .custom-card {
+    padding: 1rem 0;
+    .head {
+      padding: .5rem 1rem;
+      text-align: center;
+      color: $black-ish;
+      border-bottom: 1px solid $border-color;
+    }
+    .content {
+      padding: 1.5rem 1rem .5rem;
+    }
+    .footer {
+      @include flexBetween();
+      padding: .75rem 1rem 0;
+    }
+  }
+
+  .input-group {
+    margin-bottom: 1.75rem;
+  }
+  .p-float-label input:focus ~ label, .p-float-label input.p-filled ~ label, .p-float-label textarea:focus ~ label, .p-float-label textarea.p-filled ~ label, .p-float-label .p-inputwrapper-focus ~ label, .p-float-label .p-inputwrapper-filled ~ label {
+    top: -0.25rem;
+  }
+  textarea {
+    min-height: 100px;
+  }
+  input, textarea {
+    border-top-color: transparent !important;
+    border-right-color: transparent !important;
+    border-left-color: transparent !important;
+    box-shadow: none !important;
+    &:focus {
+      border-width: 2px;
+      border-color: $blue-ish !important;
+      border-top-color: transparent !important;
+      border-right-color: transparent !important;
+      border-left-color: transparent !important;
+      & ~ label {
+        top: -.25rem;
+      }
+    }
+    &.p-filled ~ label {
+      top: -.25rem !important;
+    }
+    & ~ label {
+      font-size: 14px;
+    }
+  }
+}
+
+// ngx-toastr
+.override-toast {
+  width: auto !important;
+  max-width: 400px !important;
+  min-width: 300px !important;
+  box-shadow: 0 0 12px rgba(70,70,70,.4) !important;
+  transition: all .35s;
+  @media (max-width: 575px) {
+    width: 280px !important;
+    min-width: unset !important;
+  }
+  &:hover {
+    box-shadow: 0 0 12px rgba(0,0,0,.6) !important;
+  }
+  .override-toast-message {
+    font-size: 14px !important;
+  }
+}
+
+// Table
+.p-datatable-scrollable-body {
+  max-height: calc(100vh - 250px) !important;
+  // height: calc(100vh - 250px) !important;
+  // min-height: 300px;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  translate: -1px;
+}
+
+// PRIME NG SWITCH RADIO BUTTON
+p-inputswitch {
+  height: 1.5rem !important;
+  &[readonly="true"], &[ng-reflect-readonly="true"] {
+    .p-inputswitch {
+      opacity: .5;
+      .p-inputswitch-slider {
+        cursor: auto;
+      }
+    }
+  }
+}
+.p-inputswitch {
+  height: 1.5rem !important;
+  .p-inputswitch-slider {
+    border-radius: 50px !important;
+    box-shadow: 1px 1px 4px rgb(0 0 0 / 25%);
+    &::before {
+      border-radius: 50px !important;
+      width: 1rem !important;
+      height: 1rem !important;
+      left: .5rem;
+      margin-top: -.5rem;
+    }
+  }
+  &.p-focus {
+    .p-inputswitch-slider {
+      box-shadow: 0 0 0 0.2rem rgb(60 60 60 / 50%);
+    }
+  }
+  &.p-inputswitch-checked {
+    .p-inputswitch-slider {
+      background: $vf-color !important;
+    }
+  }
+}
+
+// PRIME NG MULTI SELECT
+.p-checkbox .p-checkbox-box.p-highlight {
+  background-color: $vf-color;
+  border-color: #fff;
+  border-radius: 2px;
+  border-width: 1px;
+  &:hover {
+    background-color: $vf-color !important;
+    border-color: $vf-color !important;
+  }
+}
+
+.p-multiselect .p-multiselect-label {
+  padding: .25rem .75rem !important;
+}
+.courses-view .p-inputtext {
+  padding: .25rem .75rem;
+}
+
+.p-multiselect-panel {
+  *:focus {
+    box-shadow: none !important;
+  }
+  .p-multiselect-header {
+    padding: .35rem 1rem !important;
+  }
+  .p-multiselect-filter-container .p-inputtext {
+    padding: .25rem 1.75rem .25rem .5rem !important;
+  }
+  .p-multiselect-items {
+    &:not(.p-multiselect-virtualscroll) {
+      padding: 0 !important;
+    }
+    .p-multiselect-item {
+      padding: .5rem 1rem !important;
+      &.p-highlight {
+        background-color: $vf-color;
+        .p-checkbox .p-checkbox-box {
+          background-color: $vf-color;
+          border-radius: 2px;
+          border-width: 1px;
+          &:hover {
+            background-color: $vf-color !important;
+            border-color: $vf-color !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+// CKEDITOR
+.ck-content pre {
+  padding: 1.75em !important;
+}
+
+.ck-toolbar {
+  background: transparent !important;
+}
+.ck-editor__editable_inline {
+  height: calc(100vh - 150px);
+  min-height: 400px;
+  background: transparent !important;
+  .media {
+    max-width: 580px !important;
+  }
+  &.ck-read-only {
+    border: none !important;
+    height: auto;
+    min-height: unset;
+  }
+  blockquote {
+    * {
+      margin-bottom: 0;
+    }
+  }
+}
+// upload image button
+button.ck.ck-button.ck-off[data-cke-tooltip-text="Insert image"]:first-child {
+  opacity: .5;
+}
+
+// PRIME SELECT BUTTON
+.p-selectbutton {
+  // display: flex;
+  // gap: .75rem;
+  .p-button.p-component {
+    padding: .25rem .5rem;
+    // border-radius: 4px !important;
+    // box-shadow: 2px 2px 2px rgb(180 180 180);
+    // border-bottom: 2px solid darkgray !important;
+    // border-right: 2px solid darkgray !important;
+    border-right: 1px solid #ababab !important;
+    &:last-child {
+      border-right: none;
+    }
+    &:focus {
+      // box-shadow: 0 0 0 0.2rem rgba($blue-ish, .5);
+      box-shadow: none;
+    }
+    &.p-highlight, &:hover {
+      // box-shadow: inset -1px -1px 2px rgba($blue-ish, .75);
+      // border-color: #fff !important;
+    }
+    span {
+      font-size: 12px;
+      @media (max-width: 575px) {
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+.p-tooltip .p-tooltip-text {
+  padding: .275rem .75rem !important;
+  font-size: 10px;
+}
+
+// LIST BOX
+.p-listbox {
+  border: none !important;
+  .p-listbox-list-wrapper {
+    .p-listbox-list {
+      padding: 0;
+      .p-listbox-item {
+        padding: 0;
+        margin: .75rem 0;
+        &:focus {
+          box-shadow: none !important;
+        }
+        &.p-highlight {
+          background-color: transparent !important;
+          .item {
+            // background-color: $black-ish;
+            background-repeat: no-repeat !important;
+            background-size: 250% !important;
+            // transition: all .25s;
+            background: radial-gradient(circle farthest-side, #616161, #3d3d3d);
+            &.submitted.incorrect {
+              background: rgba($red-ish, .1);
+              color: $black-ish;
+              border: 1px solid $red-ish;
+            }
+          }
+        }
+        .item {
+          width: 100%;
+          padding: .65rem 1.25rem;
+          position: relative;
+          &.submitted.correct {
+            background: rgba(green, .1);
+            color: $black-ish;
+            border: 1px solid green;
+          }
+          @media (max-width: 768px) {
+            padding: .65rem .875rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// P-STEPS
+.p-steps {
+  margin-bottom: 1rem;
+  .p-steps-item {
+    &::before {
+      top: 60%;
+    }
+    .p-menuitem-link {
+      .p-steps-number {
+        min-width: 1.5rem;
+        height: 1.5rem;
+        font-size: .75rem;
+        border-radius: 50%;
+      }
+      .p-steps-title {
+        font-size: .625rem;
+      }
+    }
+
+    &.p-highlight {
+      .p-steps-number {
+        background-color: $vf-color;
+      }
+    }
+    &.p-disabled {
+      .p-steps-number {
+        background-color: #fff;
+        color: #6c757d;
+      }
+    }
+  }
+}
+
+.footer-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}

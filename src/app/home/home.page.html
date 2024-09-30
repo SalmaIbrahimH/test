@@ -1,8 +1,9 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <!-- <div class="left">
-
-      <img src="assets/images/wave-haikei (7).png" class="wave" alt="">
+<ion-content>
+  <section class="auth-layout">
+    <div class="left">
+      <!-- <svg class="wave" id="visual" viewBox="0 0 1900 1600" width="1900" height="1600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><rect x="0" y="0" width="1900" height="1600" fill="transparent"></rect><path d="M1562 1600L1544.5 1561.8C1527 1523.7 1492 1447.3 1503.5 1371.2C1515 1295 1573 1219 1548.5 1142.8C1524 1066.7 1417 990.3 1355.7 914.2C1294.3 838 1278.7 762 1281.7 685.8C1284.7 609.7 1306.3 533.3 1356.5 457.2C1406.7 381 1485.3 305 1512.3 228.8C1539.3 152.7 1514.7 76.3 1502.3 38.2L1490 0L1900 0L1900 38.2C1900 76.3 1900 152.7 1900 228.8C1900 305 1900 381 1900 457.2C1900 533.3 1900 609.7 1900 685.8C1900 762 1900 838 1900 914.2C1900 990.3 1900 1066.7 1900 1142.8C1900 1219 1900 1295 1900 1371.2C1900 1447.3 1900 1523.7 1900 1561.8L1900 1600Z" fill="#fff" stroke-linecap="round" stroke-linejoin="miter"></path></svg> -->
+      <!-- <svg class="wave" id="visual" viewBox="0 0 900 600" width="900" height="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><rect x="0" y="0" width="900" height="600" fill="#b51414"></rect><path d="M757 600L758 575C759 550 761 500 728.8 450C696.7 400 630.3 350 625.8 300C621.3 250 678.7 200 702.7 150C726.7 100 717.3 50 712.7 25L708 0L900 0L900 25C900 50 900 100 900 150C900 200 900 250 900 300C900 350 900 400 900 450C900 500 900 550 900 575L900 600Z" fill="#fff" stroke-linecap="round" stroke-linejoin="miter"></path></svg> -->
+      <img src="../../assets/wave-haikei (7).png" class="wave" alt="" />
       <div class="overlay"></div>
       <div class="content">
         <div class="text-center logo">
@@ -10,59 +11,156 @@
           <h2><span>V</span>Library</h2>
         </div>
         <h2>Login to your account</h2>
-        <p>An easier, more powerful platform to manage social learning at scale. Combine a wide range of learning activities together in a learning flow</p>
-      </div>
-    </div> -->
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-card>
-    <div class="stepper-container">
-      <!-- Step Indicator -->
-      <ion-row class="step-indicators">
-        <ion-col *ngFor="let step of steps; let i = index" [ngClass]="{'active': i <= currentStep}">
-
-          <div class="step-indicator">{{ i + 1 }}</div>
-          <div class="step-title">{{ step.title }}</div>
-
-          <!-- Add a connecting line between steps, except for the last one -->
-          <div class="step-line" *ngIf="i < steps.length - 1" [ngClass]="{'active-line': i < currentStep}"></div>
-        </ion-col>
-      </ion-row>
-
-      <!-- Step Content -->
-      <div class="step-content">
-        <ng-container [ngSwitch]="currentStep">
-          <div *ngSwitchCase="0">
-            <h2>{{ steps[0].title }}</h2>
-            <p>{{ steps[0].description }}</p>
-            <ion-input placeholder="Enter your name"></ion-input>
-          </div>
-          <div *ngSwitchCase="1">
-            <h2>{{ steps[1].title }}</h2>
-            <p>{{ steps[1].description }}</p>
-            <ion-input placeholder="Enter your email"></ion-input>
-          </div>
-          <div *ngSwitchCase="2">
-            <h2>{{ steps[2].title }}</h2>
-            <p>{{ steps[2].description }}</p>
-            <ion-input placeholder="Review your details"></ion-input>
-          </div>
-        </ng-container>
-      </div>
-
-      <!-- Navigation Buttons -->
-      <div class="step-navigation">
-        <ion-button expand="block" (click)="prevStep()" [disabled]="isFirstStep()">Previous</ion-button>
-        <ion-button expand="block" (click)="nextStep()" *ngIf="!isLastStep()">Next</ion-button>
-        <ion-button expand="block" color="success" *ngIf="isLastStep()">Finish</ion-button>
+        <p>
+          An easier, more powerful platform to manage social learning at scale.
+          Combine a wide range of learning activities together in a learning
+          flow
+        </p>
       </div>
     </div>
-    <!-- <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-    </ion-card-header> -->
+    <div class="right">
+      <div class="form-container">
+        <div class="custom-stepper">
+          <div class="step" [class.active]="step === 'step1'">
+            <div class="step-number">1</div>
+            <div class="step-label">Step 1</div>
+          </div>
+          <div class="step-separator"></div>
+          <div
+            class="step"
+            [class.active]="step === 'step2'"
+            [class.disabled]="!isLoggedIn"
+          >
+            <div class="step-number">2</div>
+            <div class="step-label">Step 2</div>
+          </div>
+        </div>
+        <div [ngSwitch]="step">
+          <!-- Step 1: Login Page -->
+          <div *ngSwitchCase="'step1'">
+            <ion-card>
+              <ion-card-header> </ion-card-header>
+              <ion-card-content>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="2" offset="5">
+                      <ion-icon
+                        name="person-circle"
+                        color="danger"
+                        id="largeIcon"
+                      ></ion-icon>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+                <form (ngSubmit)="getOtp()" [formGroup]="loginForm">
+                  <ion-item>
+                    <ion-input
+                      label="Username"
+                      labelPlacement="floating"
+                      formControlName="username"
+                      color="medium"
+                      id="wtf2"
+                    >
+                      <ion-icon
+                        slot="start"
+                        name="Person-outline"
+                        aria-hidden="true"
+                      ></ion-icon>
+                    </ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-input
+                      labelPlacement="floating"
+                      label="Password"
+                      color="medium"
+                      formControlName="password"
+                      id="wtf3"
+                    >
+                      <ion-icon
+                        slot="start"
+                        name="lock-closed-outline"
+                        aria-hidden="true"
+                      ></ion-icon>
+                      <ion-button
+                        fill="clear"
+                        slot="end"
+                        aria-label="Show/hide"
+                      >
+                        <ion-input-password-toggle
+                          slot="end"
+                          color="medium"
+                        ></ion-input-password-toggle>
+                      </ion-button>
+                    </ion-input>
+                  </ion-item>
+                  <ion-button
+                    expand="full"
+                    color="danger"
+                    [disabled]="loginForm.invalid"
+                    (click)="getOtp()"
+                    >Login</ion-button
+                  >
+                </form>
+              </ion-card-content>
+            </ion-card>
+          </div>
 
-  </ion-card>
+          <!-- Step 2: List of Clickable Items -->
+          <div *ngSwitchCase="'step2'">
+            <div *ngIf="isLoggedIn">
+              <ion-list *ngIf="!selectedMode">
+                <ion-item button (click)="onItemClick('Item 1')">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col size="1">
+                        <ion-icon
+                          name="lock-closed-outline"
+                          aria-hidden="true"
+                        ></ion-icon>
+                      </ion-col>
+                      <ion-col size="6">
+                        <ion-text>Use authenticator app</ion-text>
+                      </ion-col></ion-row
+                    ></ion-grid
+                  >
+                </ion-item>
+                <ion-item button (click)="selectMode(2)">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col size="1">
+                        <ion-icon
+                          name="chatbox-outline"
+                          aria-hidden="true"
+                        ></ion-icon>
+                      </ion-col>
+                      <ion-col size="6">
+                        <ion-text> Text {{phoneNumber}}</ion-text></ion-col
+                      >
+                    </ion-row>
+                  </ion-grid>
+                </ion-item>
+              </ion-list>
+              <ion-list *ngIf="selectedMode === 2">
+
+                <ion-text color="medium">
+                  <h2>Check your phone and enter the code                  </h2>
+                </ion-text>
+
+                <ion-item>
+                  <ion-input labelPlacement="floating" label="Enter OTP code" [(ngModel)]="otp" id="wtf">
+                   
+                  </ion-input> <ion-button  slot="end"
+                    color="danger"
+                    [disabled]="!otp" 
+                    (click)="login()"
+                    >Send</ion-button>
+                </ion-item>
+              </ion-list>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Custom Stepper -->
 </ion-content>

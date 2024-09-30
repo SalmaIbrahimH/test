@@ -1,0 +1,205 @@
+
+
+@import "/src/variables.scss";
+@import "/src/mixins.scss";
+
+.container-fluid {
+  padding-right: var(--bs-gutter-x,1.75rem) !important;
+  padding-left: var(--bs-gutter-x,1.75rem) !important;
+}
+
+.course {
+  height: 100%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 2px 2px 16px rgb(0 0 0 / 8%), -2px -2px 16px rgb(0 0 0 / 8%);
+  transition: all .3s;
+  .card-body .title {
+    word-break: break-all;
+  }
+  .overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    background-color: rgba($black-ish, .1);
+    border-radius: 4px;
+    transition: all .3s;
+    transform-origin: left;
+  }
+  &:hover {
+    box-shadow: 0px 0px 4px rgb(0 0 0 / 15%);
+    .overlay {
+      transform: scaleX(0);
+      // opacity: 0;
+      visibility: hidden;
+    }
+    .more-info {
+      top: 0 !important;
+    }
+  }
+  &.show-menu {
+    .action-icon {
+      opacity: 1;
+      visibility: visible;
+      // transform: scaleY(1);
+      &.edit-icon {
+        right: 2.25rem;
+        top: -1.75rem;
+      }
+      &.delete-icon {
+        right: .5rem;
+        top: -1.75rem;
+      }
+    }
+  }
+  .action-icon {
+    position: absolute;
+    padding: 0.4rem 0.5rem;
+    font-size: .85rem !important;
+    color: #fff;
+    top: 2.5rem;
+    right: 1.25rem;
+    border-radius: 2px;
+    width: 24px;
+    height: 24px;
+    @include flexCenter();
+    border: none;
+    outline: none;
+    box-shadow: 1px 1px 6px rgb(0 0 0 / 30%);
+    opacity: 0;
+    visibility: hidden;
+    // transform: scaleY(0);
+    z-index: 5;
+    transform-origin: top;
+    transition: all .25s ease-in-out;
+    &.delete-icon {
+      // right: 1rem;
+      // background: $red-ish;
+      transition: all .5s;
+    }
+    &.edit-icon {
+      // right: 3.5rem;
+      // background: $blue-ish;
+      transition: all .35s;
+    }
+    &:hover {
+      box-shadow: 0px 0px 4px rgb(0 0 0 / 10%);
+    }
+  }
+  .description {
+    font-size: 14px;
+  }
+  .img-container {
+    position: relative;
+    overflow: hidden;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    // &:hover img {
+    //   scale: 1.1;
+    // }
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 250px;
+      object-fit: cover;
+      transition: all .35s;
+      @media (min-width: 570px) {
+        height: 145px;
+      }
+      @media (min-width: 992px) {
+        height: 200px;
+      }
+    }
+    .menu-icon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40px;
+      height: 34px;
+      padding: .25rem;
+      .pi {
+        font-size: 1rem !important;
+      }
+      color: #fff !important;
+      @include flexCenter();
+    }
+    .more-info {
+      position: absolute;
+      top: -95px;
+      left: 0;
+      width: 100%;
+      // background-color: rgba(255,255,255, .5);
+      background: linear-gradient(
+        45deg,
+        rgba($black-ish, .75),
+        rgba($vf-color, .75),
+      );
+      padding: .35rem;
+      padding-right: 40px;
+      gap: 6px;
+      @include flexCenter();
+      justify-content: start;
+      flex-wrap: wrap;
+      &:empty {
+        padding: 0;
+      }
+      transition: all .25s;
+      span {
+        font-size: 10px;
+        padding: .25rem .5rem;
+        border-radius: 2px;
+        background: $black-ish;
+        color: #fff;
+        &:empty {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+
+.input-group {
+  position: relative;
+  margin-bottom: .25rem;
+  input {
+    padding: .35rem 2rem .35rem .75rem !important;
+    border-top-color: transparent !important;
+    border-right-color: transparent !important;
+    border-left-color: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    &:focus {
+      border-width: 2px;
+      border-color: $blue-ish !important;
+      border-top-color: transparent !important;
+      border-right-color: transparent !important;
+      border-left-color: transparent !important;
+      & ~ label {
+        top: -.25rem;
+      }
+    }
+    &.p-filled ~ label {
+      top: -.25rem !important;
+    }
+    & ~ label {
+      font-size: 14px;
+    }
+  }
+  .loading-icon {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    font-size: 16px;
+    translate: 0 -50%;
+    animation-duration: 1.25s;
+  }
+
+}
+
+ ::ng-deep .ngx-pagination .current {
+    // padding: .1875rem .625rem;
+    background: $vf-color !important;
+    // color: #fefefe;
+    // cursor: default;
+}

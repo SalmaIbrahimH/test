@@ -24,7 +24,8 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
-
+@import "/src/variables.scss";
+@import "/src/mixins.scss";
 /**
  * Ionic Dark Mode
  * -----------------------------------------------------
@@ -35,3 +36,31 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+#logo {
+
+  ion-img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 4px rgb(0 0 0 / 25%);
+  }
+  h2,ion-title {
+    font-family: 'Playball', cursive;
+    font-weight: 900;
+    font-size: calc(1rem + .9vw);
+    margin: 0;
+
+    span {
+      font-size: calc(1.75rem + .9vw);
+      color: $vf-color;
+      text-shadow: 2px 2px 4px rgb(0 0 0 / 25%);
+    }
+    @media (max-width:575px) {
+      font-size: calc(1.125rem + .9vw);
+      span {
+        font-size: calc(1.375rem + .9vw);
+      }
+    }
+  }
+}

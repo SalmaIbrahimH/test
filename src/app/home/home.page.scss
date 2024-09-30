@@ -1,138 +1,226 @@
-#container {
-  text-align: center;
+@import "/src/variables.scss";
+@import "/src/mixins.scss";
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-
-.custom-btn {
-  border: none;
-  outline: none;
-  width: 100%;
-  background-color: #fff;
-  padding: .75rem 1.25rem;
-  transition: all .35s;
+.custom-stepper {
   display: flex;
   align-items: center;
-  gap: .75rem;
-  h6 {
-    margin-bottom: 0;
-    font-size: 14px;
-  }
-  &:last-child {
-    border-top: 1px solid #efefef;
-  }
-  &:hover {
-    // background-color: $blue-ish;
-    color: #fff;
-    .icon {
-      // color: $black-ish;
-    }
-  }
-  .icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: #efefef;
-    transition: background-color .35s;
-    // @include flexCenter();
-    // span.pi {
-    //   font-size: 14px !important;
-    // }
-  }
-}
+  justify-content: space-between;
+  margin: 20px 0;
+  position: relative;
 
-.largerIcon{
-  font-size: 100px;
-zoom:3;
-}
-.stepper-container {
-  padding: 16px;
-
-  .step-indicators {
+  .step {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     position: relative;
-    margin-bottom: 24px;
+    z-index: 1;
+    cursor: pointer;
+    transition: 0.3s;
 
-    .step-indicator-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.5;
     }
 
-    .step-indicator {
-      width: 40px;
-      height: 40px;
+    .step-number {
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      background-color: lightgray;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      background-color: #ccc;
       color: white;
-      z-index: 2; /* Ensure the step indicator is above the line */
-    }
-
-    .step-title {
-      margin-top: 8px;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 12px;
+      margin-bottom: 5px;
+      transition: background-color 0.3s;
     }
 
-    .active .step-indicator {
-      background-color: var(--ion-color-primary);
+    .step-label {
+      font-size: 14px;
+      color: #555;
     }
 
-    /* Styling the lines between the steps */
-    .step-line {
+    &.active .step-number {
+      background-color: $vf-color;
+    }
+  }
+
+  .step-separator {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #ccc;
+    position: relative;
+    top: 0px;
+    z-index: 0;
+    margin: 0 10px;
+  }
+}
+.auth-layout {
+  position: relative;
+  // height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  @media (min-width: 767.9px) {
+  height: 100vh;
+
+  }
+  .logo {
+    // transform: translateX(50%);
+    padding-top: 1rem;
+    // color: #212529;
+    margin-bottom: 1rem;
+    h2 {
+      display: inline-block;
+      padding-right: 8px
+    }
+    @media (max-width: 767.9px) {
+      transform: translateX(0);
+      color: #e1e1e1;
+    }
+  }
+  .left {
+    position: relative;
+    width: 50%;
+    padding-right: 6%;
+    background-size: cover;
+    background-image: url('../../assets/Ratio\ 16_9-GettyImages-1296193227.jpg');
+    background-position-x: 40%;
+    color: #e1e1e1;
+    @include flexCenter();
+    .wave {
       position: absolute;
-      top: 20px; /* Aligns with the center of the step indicator */
-      left: 50%;
+      bottom: 0;
+      left: 5%;
       width: 100%;
-      height: 2px;
-      background-color: lightgray;
-      z-index: 1; /* Behind the step indicators */
+      height: 100%;
+      z-index: 50;
     }
-
-    /* Active lines between completed steps */
-    .active-line {
-      background-color: var(--ion-color-primary);
+    @media (max-width: 575px) {
+      width: 100%;
+      .content {
+        padding: 1rem 1.5rem !important;
+      }
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, rgba($black-ish, .75), rgba($vf-color, .5));
+    }
+    .content {
+      position: relative;
+      z-index: 60;
+      // flex-direction: column;
+      // height: calc(100% - 75px);
+      text-align: center;
+      text-shadow: 2px 2px 2px rgba(0,0,0,.50);
+      padding-right: 1.5rem;
+      padding-left: 1.5rem;
+      p {
+        margin-bottom: 0;
+        @media (max-width:768px) {
+          font-size: 13px;
+        }
+      }
     }
   }
-
-  .step-content {
-    margin-bottom: 24px;
-  }
-
-  .step-navigation {
-    display: flex;
-    justify-content: space-between;
-    ion-button {
-      flex: 1;
-      margin: 0 4px;
+  .right {
+    padding: 16px 40px;
+    width: 50%;
+    @media (max-width: 575px) {
+      padding: 16px 24px;
+      width: 100%;
+    }
+    @include flexCenter();
+    .form-container {
+      width: 100%;
+      form {
+        width: 100%;
+      }
+      .swich-auth-view {
+        @include flexBetween();
+        h6 {
+          font-size: 14px;
+          margin-bottom: 0;
+        }
+        .btn {
+          padding: .2rem 1.25rem;
+          background-color: $black-ish;
+          font-size: 14px;
+          border: none;
+        }
+      }
+    }
+    .big-icon {
+      @include flexCenter();
+      gap: 1.25rem;
+      margin-bottom: 24px;
+      .icon-span {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: $vf-color;
+        // background: linear-gradient(40deg, rgba($black-ish, .9), rgba($vf-color, .9),);
+        background-repeat: no-repeat !important;
+        background-size: 190% !important;
+        // background: radial-gradient(circle farthest-side, #df0101, #6c0100);
+        background: radial-gradient(circle farthest-side, #e60000, #ae0301);
+        @include flexCenter();
+        i {
+          color: #fff;
+          font-size: 1.5rem;
+          font-weight: 100;
+        }
+        @media (max-width:768px) {
+          width: 45px;
+          height: 45px;
+          i {
+            font-size: 1.125rem;
+          }
+        }
+      }
+    }
+    .input-group {
+      margin-bottom: 1.25rem;
+      input {
+        border-top-color: transparent !important;
+        border-right-color: transparent !important;
+        border-left-color: transparent !important;
+        box-shadow: none !important;
+        &:focus {
+          border-width: 2px;
+          border-color: $blue-ish !important;
+          border-top-color: transparent !important;
+          border-right-color: transparent !important;
+          border-left-color: transparent !important;
+          & ~ label {
+            top: -.25rem;
+          }
+        }
+        &.p-filled ~ label {
+          top: -.25rem !important;
+        }
+        & ~ label {
+          font-size: 14px;
+        }
+      }
+      .btn {
+        width: 100%;
+        background-repeat: no-repeat !important;
+        background-size: 190% !important;
+        transition: all .25s;
+        // background-color: $vf-color;
+        // background: linear-gradient(45deg, $black-ish, #e60000);
+        // background: radial-gradient(circle farthest-side, #df0101, #6c0100);
+        background: radial-gradient(circle farthest-side, #e60000, #ae0301);
+        &:hover {
+          background-position: 100%;
+        }
+      }
     }
   }
+}
+#largeIcon {
+zoom:5
 }

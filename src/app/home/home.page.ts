@@ -95,6 +95,7 @@ export class HomePage implements OnInit{
   }
 
   getOtp() {
+    console.log('getotp');
 
     if (this.loginForm.valid) {
       const password = this.loginForm.value.password;
